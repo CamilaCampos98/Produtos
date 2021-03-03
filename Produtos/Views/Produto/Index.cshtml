@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Produtos.tblProduto>
+
+@{
+    ViewBag.Title = "Produtos";
+}
+
+<h2>Visualização de Produtos</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar Produto", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            <p>Categoria do Produto</p>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Perecivel)
+        </th>
+        
+        <th><p> Ação</p></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblCategoriaProduto.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Perecivel)
+        </td>
+      
+        <td>
+            <button type="button" class="btn btn-success">  @Html.ActionLink("Atualizar", "Edit", new { id = item.ID }) </button> |
+                
+            <button type="button" class="btn btn-danger">   @Html.ActionLink("Deletar", "Delete", new { id = item.ID }) </button>
+</td>
+    </tr>
+}
+
+</table>
